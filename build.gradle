@@ -12,6 +12,20 @@ dependencies {
   testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 
+sourceSets {
+  main {
+    java {
+      srcDir 'src/main'
+    }
+  }
+
+  test {
+    java {
+      srcDirs = ["src/test"]
+    }
+  }
+}
+
 jacocoTestReport {
     reports {
         xml.enabled true
@@ -20,3 +34,9 @@ jacocoTestReport {
 }
 
 check.dependsOn jacocoTestReport
+
+test {
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
